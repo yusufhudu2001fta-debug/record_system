@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+    <h2>Edit Record</h2>
+<form method='POST'>
+    Full Name:<br>
+    <input type="text" name="full_name" value="{{record[2]}}" required><br><br>
+    Phone Number:<br>
+    <input type="text" name="phone_number" value="{{record[3]}}" required><br><br>
+    Address:<br>
+    <textarea name="address" required>{{record[4]}}</textarea><br><br>
+    <button type="submit">Udpdate Rcord</button>
+</form>
+</html>

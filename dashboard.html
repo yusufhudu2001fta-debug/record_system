@@ -1,0 +1,55 @@
+<h2>Welcome {{ user_name }}</h2>
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+
+<a href="/logout">Logout</a>
+
+<h3>Create Record</h3>
+
+<form method="POST" action="/create_record">
+
+    Record ID:<br>
+    <input type="text" name="record_id" required><br><br>
+
+    Full Name:<br>
+    <input type="text" name="full_name" required><br><br>
+
+    Phone:<br>
+    <input type="text" name="phone" required><br><br>
+
+    Address:<br>
+    <textarea name="address" required></textarea><br><br>
+
+    <button type="submit">Save Record</button>
+
+</form>
+
+
+<h3>All Records</h3>
+
+<table border="1">
+
+<tr>
+    <th>ID</th>
+    <th>Record ID</th>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Address</th>
+</tr>
+
+{% for record in records %}
+
+<tr>
+    <td>{{ record[0] }}</td>
+    <td>{{ record[1] }}</td>
+    <td>{{ record[2] }}</td>
+    <td>{{ record[3] }}</td>
+    <td>{{ record[4] }}</td>
+    <td>
+        <a href="/edit_record/{{record[0]}}" >Edit</a>|
+        <a href="/delete_record/{{record[0]}}" onclick="return confirm('Are you sure?')">Delete</a>
+    </td>
+</tr>
+
+{% endfor %}
+
+</table>
